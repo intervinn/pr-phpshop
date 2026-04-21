@@ -1,0 +1,10 @@
+{
+    "name": "yourname/exam-app",
+    "description": "PHP Exam App",
+    "autoload": {
+        "psr-4": {
+            "app\\": ""
+        }
+    },
+    "require": {}
+}
