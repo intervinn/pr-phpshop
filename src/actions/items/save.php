@@ -4,8 +4,6 @@ use app\internal\Auth;
 use app\internal\db\Database;
 use app\internal\models\Item;
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
-
 Auth::check();
 
 $user = $_SESSION["user"];

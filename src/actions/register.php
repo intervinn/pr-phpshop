@@ -1,5 +1,4 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
 
 use app\internal\db\Database;
 use app\internal\models\User;

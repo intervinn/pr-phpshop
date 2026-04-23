@@ -52,8 +52,11 @@ class UserRepository {
         $stmt = $this->pdo->prepare("SELECT cart FROM users WHERE id = ?");
         $stmt->execute([$id]);
         $col = $stmt->fetchColumn();
-        $ids = json_decode($col, true);
+        if ($col == null) {
+            return array();
+        }
 
+        $ids = json_decode($col, true);
         $objs = array_map(function ($id) {
             $items = Database::getItems();
             return $items->getById($id);
@@ -62,12 +65,12 @@ class UserRepository {
         return $objs;
     }
 
-    function getCartIds(int $id): ?array {
+    function getCartIds(int $id): array {
         $stmt = $this->pdo->prepare("SELECT cart FROM users WHERE id = ?");
         $stmt->execute([$id]);
         $col = $stmt->fetchColumn();
         if ($col == null) {
-            return null;
+            return array();
         }
         
         $ids = json_decode($col, true);

@@ -1,18 +1,31 @@
 services:
   php:
-    build: .
-    container_name: exam-php
-    ports:
-      - "8080:80"
+    build:
+      context: .
+      network: host
+    container_name: shop-php
+    environment:
+      - "PHP_VALUE=auto_prepend_file=/var/www/html/vendor/autoload.php"
     volumes:
-      - ./src:/var/www/html
-      - /var/www/html/vendor
+      - .:/var/www/html:delegated 
+      - /var/www/html/vendor      
     depends_on:
       - mysql
 
+  nginx:
+    image: nginx:alpine
+    container_name: shop-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+
   mysql:
     image: mysql:8.0
-    container_name: exam-mysql
+    container_name: shop-mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root_password

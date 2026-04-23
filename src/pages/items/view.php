@@ -2,8 +2,6 @@
 
 use app\internal\db\Database;
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
-
 session_start();
 
 $itemId = (int)($_GET["id"] ?? 0);

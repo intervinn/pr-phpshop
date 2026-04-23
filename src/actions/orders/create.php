@@ -3,8 +3,6 @@
 use app\internal\Auth;
 use app\internal\db\Database;
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
-
 Auth::check();
 
 $itemId = (int)($_POST["item_id"] ?? 0);

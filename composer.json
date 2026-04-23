@@ -3,8 +3,11 @@
     "description": "PHP Exam App",
     "autoload": {
         "psr-4": {
-            "app\\": ""
+            "app\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "ext-pdo_mysql": "*",
+        "ext-soap": "*"
+    }
 }

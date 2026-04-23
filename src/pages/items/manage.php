@@ -3,8 +3,6 @@
 use app\internal\Auth;
 use app\internal\db\Database;
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/vendor/autoload.php";
-
 Auth::check();
 
 $user = $_SESSION["user"];
